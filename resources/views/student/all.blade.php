@@ -23,9 +23,18 @@
         <td>{{ $students['address'] }}</td>
         <td>
           
-          <a href="/student/detail{{ $students->id }}"> <button><ion-icon name="information-outline"></ion-icon></button></a>
-          <a href=""> <button><ion-icon name="create-outline"></ion-icon></button></a>
-          <a href="/student.all{{ $students->id }}"><button><ion-icon name="trash-outline"></ion-icon></button></a>
+          <div class="d-flex">
+            <a href="/student/detail{{ $students->id }}"> <button><ion-icon name="information-outline"></ion-icon></button></a>
+          <a href="/student/edit/{{ $students->id}}"> <button><ion-icon name="create-outline"></ion-icon></button></a>
+          <form action="/student/delete/{{ $students->id }}" method="post" onsubmit="return confirm('Are you sure you want to delete this student?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit">
+                <ion-icon name="trash-outline"></ion-icon>
+            </button>
+        </form>
+          </div>
+        
          
         </td>
       </tr>

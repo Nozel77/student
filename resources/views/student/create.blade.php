@@ -5,7 +5,7 @@
 <a href="/student/all"><button><ion-icon name="arrow-back-outline"></ion-icon></button></a><br><br>
 <h3>Create Student</h3>
 
-<form action="/student/add" method="post">
+<form action="/student/add" method="post" onsubmit="return alert('data berhasil ditambah!');">
     @csrf
 
     <div class="mb-3">
@@ -30,10 +30,10 @@
 
     <div class="mb-3">
         <label for="alamat" class="form-label">Address</label>
-        <textarea class="form-control" id="alamat" name="address" required></textarea>
+        <input type="text" class="form-control" id="alamat" name="address" required></input>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit"  class="btn btn-primary">Submit</button>
 </form>
 @endsection
     

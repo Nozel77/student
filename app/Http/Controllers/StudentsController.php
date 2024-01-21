@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Students;
+use Illuminate\Support\Facades\Session;
 
 class StudentsController extends Controller
 {
@@ -41,15 +42,6 @@ class StudentsController extends Controller
     }
 
     public function store(Request $request){
-        // $dataStudent = new Student();
-        // $dataStudent->nis = $request->nis;
-        // $dataStudent->name = $request->name;
-        // $dataStudent->birthdate = $request->birthdate;
-        // $dataStudent->class = $request->class;
-        // $dataStudent->address = $request->address;
-
-        // $post = $dataStudent->save();
-
         $validatedData = $request->validate([
             'nis' => 'required',
             'name' => 'required',
@@ -59,5 +51,38 @@ class StudentsController extends Controller
         ]);
         Student::create($validatedData);
         return redirect('student/all')->with('success', 'data berhasil ditambahkan');
+    }
+
+    public function edit(Student $student){
+        return view('student.edit',[
+            'student' => $student
+        ]);
+    }
+
+    public function update(Request $request, Student $student) {
+        $request->validate([
+            'nis' => 'required',
+            'name' => 'required',
+            'class' => 'required',
+            'birthdate' => 'required',
+            'address' => 'required',
+        ]);
+
+        Student::where('id', $student->id)->update([
+            'name' => $request->name,
+            'nis' => $request->nis,
+            'class' => $request->class,
+            'birthdate' => $request->birthdate,
+            'address' => $request->address, 
+        ]);
+        Session::flash('success', 'data berhasil diupdate');
+        return redirect('/student/all');
+    }
+
+    public function destroy(Student $student){
+        Student::destroy($student->id);
+        Session::flash('success', 'Data Siswa Berhasil Dihapus!');
+
+        return redirect('/student/all');
     }
 }
