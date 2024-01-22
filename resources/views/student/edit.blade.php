@@ -3,9 +3,9 @@
 
 @section('container')
 <a href="/student/all"><button><ion-icon name="arrow-back-outline"></ion-icon></button></a><br><br>
-<h3>Update Student</h3>
+<h3>Create Student</h3>
 
-<form action="/student/update/{{ $student->id}}" method="post" onsubmit="return alert('data berhasil diupdate!')">
+<form action="/student/update/{{$student->id}}" method="post" onsubmit="return alert('data berhasil diubah!');">
     @csrf
     @method('PUT')
 
@@ -26,15 +26,15 @@
 
     <div class="mb-3">
         <label for="kelas" class="form-label">Class</label>
-        <input type="text" class="form-control" value="{{$student->class}}" id="kelas" name="class" required>
+        <input type="text" class="form-control"  value="{{$student->class}}" id="kelas" name="class" required>
     </div>
 
     <div class="mb-3">
         <label for="alamat" class="form-label">Address</label>
-        <input type="text" class="form-control" value="{{$student->address}}" id="kelas" name="class" required>
+        <input type="text" class="form-control" id="alamat" value="{{$student->address}}" name="address" required></input>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit"  class="btn btn-primary">Submit</button>
 </form>
 @endsection
     

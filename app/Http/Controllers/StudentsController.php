@@ -75,13 +75,12 @@ class StudentsController extends Controller
             'birthdate' => $request->birthdate,
             'address' => $request->address, 
         ]);
-        Session::flash('success', 'data berhasil diupdate');
+        Session::flash('success', 'Data berhasil diubah');
         return redirect('/student/all');
     }
 
     public function destroy(Student $student){
         Student::destroy($student->id);
-        Session::flash('success', 'Data Siswa Berhasil Dihapus!');
 
         return redirect('/student/all');
     }
