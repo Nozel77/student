@@ -16,11 +16,11 @@
     <tbody>
         @foreach ($student as $students)
         <tr>
-        <td>{{ $students['nis'] }}</td>
-        <td>{{ $students['name'] }}</td>
-        <td>{{ $students['birthdate'] }}</td>
-        <td>{{ $students['class'] }}</td>
-        <td>{{ $students['address'] }}</td>
+        <td>{{ $students->nis }}</td>
+        <td>{{ $students->name }}</td>
+        <td>{{ $students->birthdate }}</td>
+        <td>{{ $students->kelas->nama_kelas}}</td>
+        <td>{{ $students->address }}</td>
         <td>
           
           <div class="d-flex gap-2">

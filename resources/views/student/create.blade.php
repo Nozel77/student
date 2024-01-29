@@ -10,7 +10,7 @@
 
     <div class="mb-3">
         <label for="nis" class="form-label">NIS</label>
-        <input type="text" class="form-control" id="nis" name="nis" required>
+        <input type="number" class="form-control" id="nis" name="nis" required>
     </div>
 
     <div class="mb-3">
@@ -23,9 +23,13 @@
         <input type="date" class="form-control" id="tanggal_lahir" name="birthdate" required>
     </div>
 
-    <div class="mb-3">
+    <div  class="mb-3 text-dark">
         <label for="kelas" class="form-label">Class</label>
-        <input type="text" class="form-control" id="kelas" name="class" required>
+        <select class="form-select" name="kelas_id" id="kelas">
+            @foreach ($kelass as $kelas)
+            <option class="text-dark" name="kelas_id" value="{{ $kelas->id }}">{{ $kelas->nama_kelas }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="mb-3">

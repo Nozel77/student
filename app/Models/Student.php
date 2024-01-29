@@ -10,5 +10,10 @@ class Student extends Model
     use HasFactory;
 
     protected $table = 'student';
-    protected $fillable = ['nis', 'name', 'class', 'birthdate', 'address'];
+    protected $fillable = ['nis', 'name', 'kelas_id', 'birthdate', 'address'];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

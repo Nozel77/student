@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Students;
@@ -38,7 +39,9 @@ class StudentsController extends Controller
     }
 
     public function create(){
-        return view('student.create');
+        return view('student.create', [
+            "kelass" => Kelas::all()
+        ]);
     }
 
     public function store(Request $request){
@@ -46,7 +49,7 @@ class StudentsController extends Controller
             'nis' => 'required',
             'name' => 'required',
             'birthdate' => 'required|date',
-            'class' => 'required',
+            'kelas_id' => 'required',
             'address' => 'required',
         ]);
         Student::create($validatedData);
