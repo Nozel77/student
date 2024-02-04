@@ -58,7 +58,8 @@ class StudentsController extends Controller
 
     public function edit(Student $student){
         return view('student.edit',[
-            'student' => $student
+            'student' => $student,
+            'kelass' => Kelas::all()
         ]);
     }
 
@@ -66,7 +67,7 @@ class StudentsController extends Controller
         $request->validate([
             'nis' => 'required',
             'name' => 'required',
-            'class' => 'required',
+            'kelas_id' => 'required',
             'birthdate' => 'required',
             'address' => 'required',
         ]);
@@ -74,7 +75,7 @@ class StudentsController extends Controller
         Student::where('id', $student->id)->update([
             'name' => $request->name,
             'nis' => $request->nis,
-            'class' => $request->class,
+            'kelas_id' => $request->kelas_id,
             'birthdate' => $request->birthdate,
             'address' => $request->address, 
         ]);

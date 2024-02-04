@@ -24,9 +24,13 @@
         <input type="date" class="form-control" value="{{$student->birthdate}}" id="tanggal_lahir" name="birthdate" required>
     </div>
 
-    <div class="mb-3">
+    <div  class="mb-3 text-dark">
         <label for="kelas" class="form-label">Class</label>
-        <input type="text" class="form-control"  value="{{$student->class}}" id="kelas" name="class" required>
+        <select class="form-select" name="kelas_id" id="kelas">
+            @foreach ($kelass as $kelas)
+            <option class="text-dark" name="kelas_id" value="{{ $kelas->id}}" {{$kelas->id == $student->kelas_id ? 'selected' : ''}}>{{ $kelas->nama_kelas }}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="mb-3">
