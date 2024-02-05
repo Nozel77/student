@@ -40,9 +40,9 @@ Route::group(["prefix" => "/kelas"], function(){
     Route::get('/detail{student}', [KelasController::class, 'show']);
     Route::get('/create', [KelasController::class, 'create']);
     Route::post('/add', [KelasController::class, 'store']);
-    Route::get('/edit/{student}', [KelasController::class, 'edit']);
-    Route::put('/update/{student}', [KelasController::class, 'update']);
-    Route::delete('/delete/{student}', [KelasController::class, 'destroy']);
+    Route::get('/edit/{kelas}', [KelasController::class, 'edit']);
+    Route::put('/update/{kelas}', [KelasController::class, 'update']);
+    Route::delete('/delete/{kelas}', [KelasController::class, 'destroy']);
 });
 
 

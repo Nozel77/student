@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class KelasController extends Controller
 {
@@ -13,7 +15,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        
+        return view('grade.all', [
+            'kelass' => Kelas::all()
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        //
+        return view('grade.create');
     }
 
     /**
@@ -34,7 +38,11 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_kelas' => 'required',
+        ]);
+        Kelas::create($validatedData);
+        return redirect('kelas/all')->with('success', 'data berhasil ditambahkan');
     }
 
     /**
@@ -54,9 +62,11 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Kelas $kelas)
     {
-        //
+        return view('grade.edit', [
+            'kelas' => $kelas
+        ]);
     }
 
     /**
@@ -66,9 +76,17 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Kelas $kelas)
     {
-        //
+        $request->validate([
+            'nama_kelas' => 'required',
+        ]);
+
+        Kelas::where('id', $kelas->id)->update([
+            'nama_kelas' => $request->nama_kelas,
+        ]);
+        Session::flash('success', 'Data berhasil diubah');
+        return redirect('/kelas/all');
     }
 
     /**
@@ -77,8 +95,10 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kelas $kelas)
     {
-        //
+        Kelas::destroy($kelas->id);
+
+        return redirect('/kelas/all');
     }
 }

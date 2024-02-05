@@ -3,7 +3,7 @@
 
 @section('container')
 <a href="/student/all"><button><ion-icon name="arrow-back-outline"></ion-icon></button></a><br><br>
-<h3>Create Student</h3>
+<h3>Edit Student</h3>
 
 <form action="/student/update/{{$student->id}}" method="post" onsubmit="return alert('data berhasil diubah!');">
     @csrf
