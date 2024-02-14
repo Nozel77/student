@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +47,16 @@ Route::group(["prefix" => "/kelas"], function(){
     Route::put('/update/{kelas}', [KelasController::class, 'update']);
     Route::delete('/delete/{kelas}', [KelasController::class, 'destroy']);
 });
+
+Route::group(["prefix" => "/auth"], function(){
+    Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+    Route::post('/register', [RegisterController::class, 'store']);
+});
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 
 
