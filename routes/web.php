@@ -56,7 +56,9 @@ Route::group(["prefix" => "/auth"], function(){
     Route::post('/register', [RegisterController::class, 'store']);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', function(){
+    return view('dashboard.layouts.main');
+})->middleware('auth');
 
 
 
