@@ -5,7 +5,7 @@
 <a href="/kelas/all"><button><ion-icon name="arrow-back-outline"></ion-icon></button></a><br><br>
 <h3>Edit Class</h3>
 
-<form action="/kelas/update/{{$kelas->id}}" method="post" onsubmit="return alert('data berhasil ditambah!');">
+<form action="/kelas/update/{{$kelas->id}}" method="post" onsubmit="return alert('data berhasil diubah!');">
     @csrf
     @method('PUT')
 

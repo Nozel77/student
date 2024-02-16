@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use App\Models\Students;
 use Illuminate\Support\Facades\Session;
 
 class StudentsController extends Controller
 {
     public function index(){
         return view('student.all', [
-            'student' => Student::all()
+            'student' => Student::latest()->filter(request(['search']))->paginate(25)
         ]);
     }
 
@@ -25,7 +24,7 @@ class StudentsController extends Controller
 
     public function home(){
         return view('home', [
-            'satu' => 'halo selamat datang ini adalah homepage',
+            'satu' => 'ini adalah homepage',
             'dua' => 'saya sedang belajar laravel'
         ]);
     }
@@ -53,7 +52,7 @@ class StudentsController extends Controller
             'address' => 'required',
         ]);
         Student::create($validatedData);
-        return redirect('student/all')->with('success', 'data berhasil ditambahkan');
+        return redirect('dashboard/student')->with('success', 'data berhasil ditambahkan');
     }
 
     public function edit(Student $student){
@@ -80,12 +79,12 @@ class StudentsController extends Controller
             'address' => $request->address, 
         ]);
         Session::flash('success', 'Data berhasil diubah');
-        return redirect('/student/all');
+        return redirect('/dashboard/student');
     }
 
     public function destroy(Student $student){
         Student::destroy($student->id);
 
-        return redirect('/student/all');
+        return redirect('/dashboard/student');
     }
 }
