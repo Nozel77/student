@@ -9,7 +9,7 @@
         <th scope="col">Name</th>
         <th scope="col">Birthdate</th>
         <th scope="col">Class</th>
-        <th scope="col">Address</th>
+        {{-- <th scope="col">Address</th> --}}
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -20,19 +20,19 @@
         <td>{{ $students->name }}</td>
         <td>{{ $students->birthdate }}</td>
         <td>{{ $students->kelas->nama_kelas}}</td>
-        <td>{{ $students->address }}</td>
+        {{-- <td>{{ $students->address }}</td> --}}
         <td>
           
           <div class="d-flex gap-2">
             <a href="/student/detail{{ $students->id }}"> <button><ion-icon name="information-outline"></ion-icon></button></a>
-            <a href="/student/edit/{{ $students->id }}"> <button><ion-icon name="create-outline"></ion-icon></button></a>
+            {{-- <a href="/student/edit/{{ $students->id }}"> <button><ion-icon name="create-outline"></ion-icon></button></a>
           <form action="/student/delete/{{ $students->id }}" method="post" onsubmit="return confirm('Are you sure you want to delete this student?');">
             @csrf
             @method('DELETE')
             <button type="submit">
                 <ion-icon name="trash-outline"></ion-icon>
             </button>
-        </form>
+        </form> --}}
           </div>
         
          
@@ -41,5 +41,5 @@
         @endforeach
     </tbody>
   </table>
-  <a href="/student/create"><button><ion-icon name="add-outline"></ion-icon></button></a>
+  {{-- <a href="/student/create"><button><ion-icon name="add-outline"></ion-icon></button></a> --}}
 @endsection
