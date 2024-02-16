@@ -38,7 +38,7 @@
               Welcome, {{ auth()->user()->name }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
+              <li><a class="dropdown-item" href="/dashboard/student">My Dashboard</a></li>
               <li>
                 <form action="/auth/logout" method="POST">
                   @csrf

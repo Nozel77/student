@@ -1,8 +1,6 @@
-@extends('layout.main')
-
-@section('container')
-
-<table class="table table-sm">
+@extends('dashboard.main')
+@section('content')
+<table class="table table-sm mt-3">
     <thead class="table-dark">
       <tr>
         <th scope="col">Class</th>
@@ -16,10 +14,6 @@
         <td>
           
           <div class="d-flex gap-2">
-            <a href="/kelas/detail{{ $kelas->id }}"> <button><ion-icon name="information-outline"></ion-icon></button></a>
-          </div>
-
-          {{-- <div class="d-flex gap-2">
             <a href="/kelas/edit/{{ $kelas->id }}"> <button><ion-icon name="create-outline"></ion-icon></button></a>
           <form action="/kelas/delete/{{ $kelas->id }}" method="post" onsubmit="return confirm('Are you sure you want to delete this student?');">
             @csrf
@@ -27,7 +21,7 @@
             <button type="submit">
                 <ion-icon name="trash-outline"></ion-icon>
             </button>
-        </form> --}}
+        </form>
           </div>
         
          
@@ -36,5 +30,5 @@
         @endforeach
     </tbody>
   </table>
-  {{-- <a href="/kelas/create"><button><ion-icon name="add-outline"></ion-icon></button></a> --}}
+  <a href="/kelas/create"><button><ion-icon name="add-outline"></ion-icon></button></a>
 @endsection

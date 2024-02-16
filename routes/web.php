@@ -40,7 +40,7 @@ Route::group(["prefix" => "/student"], function(){
 
 Route::group(["prefix" => "/kelas"], function(){
     Route::get('/all', [KelasController::class, 'index']);
-    Route::get('/detail{student}', [KelasController::class, 'show']);
+    Route::get('/detail{kelas}', [KelasController::class, 'show']);
     Route::get('/create', [KelasController::class, 'create']);
     Route::post('/add', [KelasController::class, 'store']);
     Route::get('/edit/{kelas}', [KelasController::class, 'edit']);
@@ -56,9 +56,11 @@ Route::group(["prefix" => "/auth"], function(){
     Route::post('/register', [RegisterController::class, 'store']);
 });
 
-Route::get('/dashboard', function(){
-    return view('dashboard.layouts.main');
-})->middleware('auth');
+Route::group(["prefix" => "/dashboard"], function(){
+    Route::get('/main', [DashboardController::class, 'index'])->middleware(['auth']);
+    Route::get('/student', [DashboardController::class, 'student']);
+    Route::get('/kelas', [DashboardController::class, 'kelas']);
+});
 
 
 
