@@ -1,5 +1,18 @@
 @extends('dashboard.main')
 @section('content')
+<div class="row justify-content-end mt-3">
+  <div class="col-md-3">
+  <form action="/dashboard/student">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search" name="search" value="{{request('search')}}">
+      <button class="btn btn-info" type="submit" id="button-addon2">Search</button>
+    </div>
+  </form>
+  </div>
+  </div>
+
+  <a href="/student/create"><button><ion-icon name="add-outline"></ion-icon></button></a>
+
 <table class="table table-sm mt-3">
   <thead class="table-dark">
     <tr>
@@ -22,7 +35,6 @@
       <td>
         
         <div class="d-flex gap-2">
-          <a href="/student/detail{{ $students->id }}"> <button><ion-icon name="information-outline"></ion-icon></button></a>
           <a href="/student/edit/{{ $students->id }}"> <button><ion-icon name="create-outline"></ion-icon></button></a>
         <form action="/student/delete/{{ $students->id }}" method="post" onsubmit="return confirm('Are you sure you want to delete this student?');">
           @csrf
@@ -39,5 +51,9 @@
       @endforeach
   </tbody>
 </table>
-<a href="/student/create"><button><ion-icon name="add-outline"></ion-icon></button></a>
+
+<div class="d-flex justify-content-center">
+  {{ $student->links()}}
+</div>
+
 @endsection

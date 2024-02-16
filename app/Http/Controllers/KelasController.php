@@ -42,7 +42,7 @@ class KelasController extends Controller
             'nama_kelas' => 'required',
         ]);
         Kelas::create($validatedData);
-        return redirect('kelas/all')->with('success', 'data berhasil ditambahkan');
+        return redirect('dashboard/kelas')->with('success', 'data berhasil ditambahkan');
     }
 
     /**
@@ -87,7 +87,7 @@ class KelasController extends Controller
             'nama_kelas' => $request->nama_kelas,
         ]);
         Session::flash('success', 'Data berhasil diubah');
-        return redirect('/kelas/all');
+        return redirect('dashboard/kelas');
     }
 
     /**
@@ -100,6 +100,6 @@ class KelasController extends Controller
     {
         Kelas::destroy($kelas->id);
 
-        return redirect('/kelas/all');
+        return redirect('dashboard/kelas');
     }
 }

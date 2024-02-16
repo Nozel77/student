@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
-
 
 
 Route::get('/', [StudentsController::class, 'home']);
@@ -58,9 +55,11 @@ Route::group(["prefix" => "/auth"], function(){
 
 Route::group(["prefix" => "/dashboard"], function(){
     Route::get('/main', [DashboardController::class, 'index'])->middleware(['auth']);
-    Route::get('/student', [DashboardController::class, 'student']);
-    Route::get('/kelas', [DashboardController::class, 'kelas']);
+    Route::get('/student', [DashboardController::class, 'student'])->middleware(['auth']);
+    Route::get('/kelas', [DashboardController::class, 'kelas'])->middleware(['auth']);
 });
+
+
 
 
 
