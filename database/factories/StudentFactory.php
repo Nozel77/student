@@ -20,7 +20,7 @@ class StudentFactory extends Factory
             'nis' => $this->faker->unique()->randomNumber(5),
             'name' => $this->faker->name(),
             'birthdate' => $this->faker->date(),
-            'kelas_id' => $this->faker->numberBetween(1, 4),
+            'kelas_id' => $this->faker->numberBetween(1, 6),
             'address' => $this->faker->address(),
         ];
     }
