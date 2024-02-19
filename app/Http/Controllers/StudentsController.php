@@ -11,7 +11,7 @@ class StudentsController extends Controller
 {
     public function index(){
         return view('student.all', [
-            'student' => Student::latest()->filter(request(['search']))->paginate(25)
+            'student' => Student::latest()->filter(request(['search']))->paginate(10)
         ]);
     }
 
